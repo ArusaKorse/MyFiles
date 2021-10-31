@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+        
+        <bean id="emp1" class="com.arusa.EmpDetails.Employee">
+        	<constructor-arg  value="101" type="int"></constructor-arg>
+        	<constructor-arg value="John"></constructor-arg>
+        	<constructor-arg><ref bean="add1"/></constructor-arg>
+        </bean>
+        <bean id="add1" class="com.arusa.EmpDetails.Address">
+        <constructor-arg value="ratnagiri"></constructor-arg>
+        <constructor-arg value="Maharashtra"></constructor-arg>
+        </bean>
+ </beans>
