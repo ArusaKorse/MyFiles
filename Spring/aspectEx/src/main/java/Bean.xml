@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+    http://www.springframework.org/schema/aop   
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+    <aop:aspectj-autoproxy />
+    <bean id="empbean" class="com.arusa.aspectEx.Employee" >
+    	<property name="eid" value="101"/>
+    	<property name="ename" value="Arusa" />
+    	
+    </bean>
+    <bean id="asbean" class="com.arusa.aspectEx.EmpAspect" />
+    
+    <aop:config>
+    <aop:aspect id="myaspect" ref="asbean">
+    	<aop:pointcut expression="execution(* com.arusa.aspectEx.Employee.toString(..))" id="displayService" />
+    	<aop:before method="displayAdvice"  pointcut-ref="displayService"></aop:before>
+    	
+    	
+    </aop:aspect>
+    
+    <aop:aspect id="myaspect1" ref="asbean">
+    	<aop:pointcut expression="execution(* com.arusa.aspectEx.Employee.get*(..))" id="setService" />
+    	<aop:after method="settingAdvice" pointcut-ref="setService"></aop:after>
+    </aop:aspect>
+    </aop:config>
+    </beans>
